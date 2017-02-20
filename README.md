@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Workout app for users to track workout length and chat with followed users
 
 Things you may want to cover:
 
