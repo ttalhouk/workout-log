@@ -9,10 +9,15 @@
   </head>
 
   <body>
-    <%= render "/shared/header"%>
-    <div class="row">
-      <%= render "/shared/messages"%>
-      <%= yield %>
+    <div class="wrapper">
+      <%= render "/shared/header"%>
+      <div class="row content">
+        <%= render "/shared/messages"%>
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render "/shared/footer"%>
     </div>
   </body>
 </html>

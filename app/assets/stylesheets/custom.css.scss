@@ -1,8 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content {
   padding-top: 70px;
+  flex: 1;
 }
 
 // navbar styles
@@ -40,4 +47,24 @@ body {
 
 .navbar-default .navbar-nav li > a:hover {
   color: #ff0000;
+}
+
+// devise styles
+
+#error_explanation {
+background-color: #f2dede;
+color: #a94442;
+text-align: left;
+padding: 5px 20px;
+margin-bottom: 30px;
+}
+
+#error_explanation h2 {
+font-size: 150%;
+}
+
+footer {
+
+  background-color: #404040;
+  color: #cbcbcb;
 }
