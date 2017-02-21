@@ -17,7 +17,7 @@ RSpec.feature "User Sign Out" do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Signed out successfully.")
-    expect(page).to_not have_content("welcome: #{@user.email}")
+    expect(page).to_not have_content("logged in as: #{@user.email}")
     expect(page).to_not have_link("Sign Out")
 
   end

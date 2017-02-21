@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for([current_user, @exercise], html: {class:'form-horizontal', role:"form"}) do |f| %>
+      <% if @exercise.errors.any? %>
+        <div class="panel panel-danger col-md-offset-1">
+          <div class="panel-heading">
+            <strong class='panel-title'>The form has <%= pluralize(@exercise.errors.count, "error")%></strong>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @exercise.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :duration, "Duration (min)" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.number_field :duration, class: "form-control", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :workout, "Workout Details" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_area :workout, class: "form-control", rows: 10, placeholder:"eg. Jogging"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :workout_date, "Activity Date" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.date_field :workout_date, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-8 col-md-offset-2">
+          <%= f.submit class:"btn btn-success btn-lg pull-left"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

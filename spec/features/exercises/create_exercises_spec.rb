@@ -4,7 +4,6 @@ RSpec.feature "Create Exercise" do
   before do
     @user = User.create!(email: "bob@example.com", password:"password")
     @user2 = User.create!(email: "bill@example.com", password:"password")
-    login_as(@user)
   end
   scenario "as logged in user" do
     login_as(@user)
@@ -16,7 +15,7 @@ RSpec.feature "Create Exercise" do
     expect(current_path).to  eq(new_user_exercise_path(@user))
     expect(page).to have_link('Back')
 
-    fill_in "Duration", with: 20
+    fill_in "Duration (min)", with: 20
     fill_in "Workout Details", with: "Jogging"
     fill_in "Activity Date", with:"2017-01-01"
     click_button "Create Exercise"

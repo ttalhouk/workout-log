@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "User Sign up" do
   scenario "A user signs up for the app" do
     visit '/'
+
     click_link "Sign Up"
 
     @email = "bob@example.com"
@@ -15,11 +16,12 @@ RSpec.feature "User Sign up" do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("You have signed up successfully.")
-    expect(page).to have_content("welcome: #{@email}")
+    expect(page).to have_content("logged in as: #{@email}")
     expect(page).to_not have_link("Sign In")
     expect(page).to_not have_link("Sign Up")
     expect(page).to have_link("Sign Out")
 
   end
+
 
 end
