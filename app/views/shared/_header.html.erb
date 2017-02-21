@@ -18,6 +18,7 @@
         <li><%= link_to "Atheletes Den",root_path %></li>
         <% if signed_in? %>
           <li><small>welcome: <%=current_user.email%></small></li>
+          <li><%= link_to "Sign Out",destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign Up",new_user_registration_path %></li>
           <li><%= link_to "Sign In",new_user_session_path %></li>
