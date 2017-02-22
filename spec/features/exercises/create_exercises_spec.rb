@@ -37,8 +37,8 @@ RSpec.feature "Create Exercise" do
     expect(page).to have_content('Exercise could not be created')
 
     expect(page).to have_content('Duration can\'t be blank')
-    expect(page).to have_content('Workout can\'t be blank')
-    expect(page).to have_content('Workout date can\'t be blank')
+    expect(page).to have_content('Workout details can\'t be blank')
+    expect(page).to have_content('Activity date can\'t be blank')
   end
 
   scenario "with string for duration" do
