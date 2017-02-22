@@ -1,4 +1,19 @@
-<div class="jumbotron">  
+<div class="jumbotron">
   <h1>Workout Lounge!</h1>
   <p>Show off your workout</p>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h2>List of Members</h2>
+  </div>
+</div>
+<div class="row">
+  <% @atheletes.each do |athelete|%>
+    <div class="col-md-10 well member">
+      <%= athelete.full_name %>
+
+    </div>
+
+  <% end %>
+
 </div>
