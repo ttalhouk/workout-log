@@ -16,7 +16,7 @@ class ExercisesController < ApplicationController
       flash[:notice] = 'Exercise has been created'
       redirect_to user_exercise_path(current_user, @exercise)
     else
-      flash[:danger] = 'Exercise could not be created'
+      flash.now[:danger] = 'Exercise could not be created'
       render :new
 
     end

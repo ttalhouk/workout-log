@@ -27,9 +27,29 @@ RSpec.feature "Create Exercise" do
 
   end
 
-  scenario "as a non logged in user" do
+  scenario "with missing field information" do
+    login_as(@user)
+    visit new_user_exercise_path(@user)
+    fill_in "Duration (min)", with: ""
+    fill_in "Workout Details", with: ""
+    fill_in "Activity Date", with:""
+    click_button "Create Exercise"
+    expect(page).to have_content('Exercise could not be created')
 
+    expect(page).to have_content('Duration can\'t be blank')
+    expect(page).to have_content('Workout can\'t be blank')
+    expect(page).to have_content('Workout date can\'t be blank')
+  end
 
+  scenario "with string for duration" do
+    login_as(@user)
+    visit new_user_exercise_path(@user)
+    fill_in "Duration (min)", with: "twenty"
+    fill_in "Workout Details", with: "Jogging"
+    fill_in "Activity Date", with:"2017-01-01"
+    click_button "Create Exercise"
+    expect(page).to have_content('Exercise could not be created')
+    expect(page).to have_content("Duration is not a number")
   end
 
 end

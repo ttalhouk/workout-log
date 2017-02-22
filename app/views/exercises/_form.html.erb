@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-10 col-md-offset-1">
     <%= form_for([current_user, @exercise], html: {class:'form-horizontal', role:"form"}) do |f| %>
       <% if @exercise.errors.any? %>
-        <div class="panel panel-danger col-md-offset-1">
+        <div class="panel panel-danger">
           <div class="panel-heading">
             <strong class='panel-title'>The form has <%= pluralize(@exercise.errors.count, "error")%></strong>
           </div>
           <div class="panel-body">
             <ul>
               <% @exercise.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+                  <li><%= message %></li>
               <% end %>
             </ul>
           </div>
