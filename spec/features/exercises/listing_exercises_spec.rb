@@ -9,7 +9,7 @@ RSpec.feature "Listing Users Exercises" do
 
     @exercise2 = @user.exercises.create(duration:40,workout:'Leg Day', workout_date:2.days.ago)
 
-    @exercise3 = @user.exercises.create(duration:60,workout:'swimming', workout_date:10.days.ago)
+    @exercise3 = @user.exercises.create(duration:60,workout:'swimming', workout_date:8.days.ago)
   end
   scenario "Show last 7 days of workouts" do
     visit '/'
@@ -24,9 +24,9 @@ RSpec.feature "Listing Users Exercises" do
     expect(page).to have_content(@exercise2.workout)
     expect(page).to have_content(@exercise2.workout_date)
 
-    # expect(page).to have_content(@exercise3.duration)
-    # expect(page).to have_content(@exercise3.workout)
-    # expect(page).to have_content(@exercise3.workout_date)
+    expect(page).to_not have_content(@exercise3.duration)
+    expect(page).to_not have_content(@exercise3.workout)
+    expect(page).to_not have_content(@exercise3.workout_date)
   end
 
   scenario "No workouts to list" do
