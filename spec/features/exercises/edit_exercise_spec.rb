@@ -4,7 +4,7 @@ RSpec.feature "Editing Users Exercises" do
   before do
     @owner = User.create!(email: "bob@example.com", password:"password")
     @viewer = User.create!(email: "bill@example.com", password:"password")
-    @exercise1 = @owner.exercises.create(duration:20,workout:'Jogging', workout_date:Date.today)
+    @exercise1 = @owner.exercises.create(duration:40,workout:'Jogging', workout_date:Date.today)
 
     # @exercise2 = @owner.exercises.create(duration:40,workout:'Leg Day', workout_date:2.days.ago)
     #
@@ -22,13 +22,14 @@ RSpec.feature "Editing Users Exercises" do
 
     fill_in "Duration (min)", with: 30
     fill_in "Workout Details", with: "Walking"
-    fill_in "Activity Date", with: 1.day.ago
 
-    xpect(page).to have_content('Exercise has been updated')
+    click_button "Update Exercise"
+
+    expect(page).to have_content('Exercise has been updated')
     expect(current_path).to eq(user_exercise_path(@owner,@exercise1))
     expect(page).to have_content(30)
     expect(page).to have_content("Walking")
-    expect(page).to_not have_content(20)
+    expect(page).to_not have_content(40)
     expect(page).to_not have_content("Jogging")
 
   end

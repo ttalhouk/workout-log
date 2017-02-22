@@ -1,0 +1,5 @@
+<h2 class="text-center">Edit Workout for <%= current_user.full_name%></h2>
+<%= render 'form'%>
+<div class="col-md-12">
+  <%= link_to 'Back', user_exercises_path(current_user), class: "btn btn-primary link", id:'new-exer-btn'%>
+</div>
