@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   def index
-    @exercises = current_user.exercises
+    @exercises = current_user.exercises.where('workout_date > ?', 7.days.ago).order(workout_date: :desc)
   end
 
   def show
