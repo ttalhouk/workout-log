@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h2>Search Results for <%= @search_term %></h2>
+    <%= will_paginate @atheletes, render: BootstrapPagination::Rails, class: "pull-left paginate" %>
+  </div>
+</div>
+<div class="row">
+  <% @atheletes.each do |athelete|%>
+    <div class="col-md-10 col-md-offset-1 well member">
+      <%= athelete.full_name %>
+    </div>
+  <% end %>
+
+</div>

@@ -10,6 +10,15 @@ class User < ApplicationRecord
 
   self.per_page = 10
 
+  def self.search_by_name(term)
+    names_array = term.split(' ')
+    if names_array.length == 1
+      where('lower(first_name) LIKE ? OR lower(last_name) LIKE ?', "%#{names_array[0].downcase}%","%#{names_array[0].downcase}%").order(:first_name)
+    else
+      where('lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(first_name) LIKE ? OR lower(last_name) LIKE ?', "%#{names_array[0].downcase}%","%#{names_array[0].downcase}%","%#{names_array[1].downcase}%","%#{names_array[1].downcase}%").order(:first_name)
+    end
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end
