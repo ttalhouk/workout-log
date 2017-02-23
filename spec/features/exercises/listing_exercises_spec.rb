@@ -15,6 +15,7 @@ RSpec.feature "Listing Users Exercises" do
       password:"password"
     )
     login_as(@user)
+    @user.friendships.create(friend: @user2)
     @exercise1 = @user.exercises.create(duration:20,workout:'Jogging', workout_date:Date.today)
 
     @exercise2 = @user.exercises.create(duration:40,workout:'Leg Day', workout_date:2.days.ago)
@@ -56,4 +57,17 @@ RSpec.feature "Listing Users Exercises" do
 
     expect(page).to have_content('No Workouts')
   end
+
+  scenario "User sees list of friends" do
+
+    visit '/'
+
+    click_link "My Lounge"
+
+
+    expect(page).to have_content(@user2.full_name)
+    expect(page).to have_link(@user2.full_name)
+    expect(page).to have_link("Unfollow")
+  end
+
 end

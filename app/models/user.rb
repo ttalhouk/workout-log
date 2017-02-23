@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].join(" ")
   end
+
+  def current_friendship(friend)
+    friendships.where(friend: friend).first
+  end
 end
