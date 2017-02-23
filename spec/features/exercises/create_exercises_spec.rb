@@ -2,8 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Create Exercise" do
   before do
-    @user = User.create!(email: "bob@example.com", password:"password")
-    @user2 = User.create!(email: "bill@example.com", password:"password")
+    @user = User.create!(
+      first_name:'Bob',
+      last_name:'Job',
+      email: "bob@example.com",
+      password:"password"
+    )
+    @user2 = User.create!(
+      first_name:'Suzy',
+      last_name:"Smith",
+      email: "sue@example.com",
+      password:"password"
+    )
   end
   scenario "as logged in user" do
     login_as(@user)

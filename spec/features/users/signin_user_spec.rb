@@ -2,8 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "User Sign In" do
   before do
-    @user = User.create(email: "bob@example.com", password:"password")
-    logout
+    @user= User.create!(
+      first_name:'Bob',
+      last_name:'Job',
+      email: "bob@example.com",
+      password:"password"
+    )
+    @user2 = User.create!(
+      first_name:'Suzy',
+      last_name:"Smith",
+      email: "sue@example.com",
+      password:"password"
+    )
   end
   scenario "An existing user signs into app" do
     visit '/'

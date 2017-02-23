@@ -2,8 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Editing Users Exercises" do
   before do
-    @owner = User.create!(email: "bob@example.com", password:"password")
-    @viewer = User.create!(email: "bill@example.com", password:"password")
+    @owner= User.create!(
+      first_name:'Bob',
+      last_name:'Job',
+      email: "bob@example.com",
+      password:"password"
+    )
+    @viewer = User.create!(
+      first_name:'Suzy',
+      last_name:"Smith",
+      email: "sue@example.com",
+      password:"password"
+    )
     @exercise1 = @owner.exercises.create(duration:40,workout:'Jogging', workout_date:Date.today)
 
     # @exercise2 = @owner.exercises.create(duration:40,workout:'Leg Day', workout_date:2.days.ago)

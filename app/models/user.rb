@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :exercises, dependent: :destroy
 
+  validates :email, :first_name, :last_name, :password, presence:true
+
   def full_name
     [first_name, last_name].join(" ")
   end
