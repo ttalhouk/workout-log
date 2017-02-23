@@ -12,6 +12,9 @@
   <% @atheletes.each do |athelete|%>
     <div class="col-md-10 col-md-offset-1 well member">
       <%= athelete.full_name %>
+      <%if current_user%>
+      <%= link_to "Follow", friendships_path(friend_id: athelete.id), method: :post, class:'btn btn-success pull-right' unless current_user.follows_or_same?(athelete) %>
+      <% end %>
     </div>
   <% end %>
 

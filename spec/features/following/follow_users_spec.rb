@@ -19,15 +19,15 @@ RSpec.feature "Following Users" do
   scenario "User follows another user" do
     visit '/'
 
-    href = "friendships?friend.id=#{@user.id}"
+    href = "/friendships?friend_id=#{@user.id}"
     expect(page).to_not have_link("Follow", href: href)
-    href2 = "friendships?friend.id=#{@user2.id}"
+    href2 = "/friendships?friend_id=#{@user2.id}"
     expect(page).to have_link("Follow", href: href2)
-    link = "a[href='friendships?friend.id=#{@user2.id}']"
+    link = "a[href='/friendships?friend_id=#{@user2.id}']"
 
     find(link).click
     expect(page).to_not have_link("Follow", href: href2)
-    
+
   end
 
 end
