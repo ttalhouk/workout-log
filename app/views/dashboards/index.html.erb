@@ -5,6 +5,7 @@
 <div class="row">
   <div class="col-md-12 text-center">
     <h2>List of Members</h2>
+    <%= will_paginate @atheletes, render: BootstrapPagination::Rails, class: "pull-left paginate" %>
   </div>
 </div>
 <div class="row">
