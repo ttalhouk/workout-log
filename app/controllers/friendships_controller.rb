@@ -14,6 +14,16 @@ class FriendshipsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    friendship = Friendship.find(params[:id])
+    if friendship.destroy
+      flash[:success] = "#{friendship.friend.full_name} was unfollowed"
+    else
+      flash[:danger] = 'Friendship was not deleted'
+    end
+    redirect_to user_exercises_path(current_user)
+  end
+
   private
 
   def friendship_params

@@ -1,4 +1,4 @@
-<h2>My Workouts (past 7 days)</h2>
+<h2 class="text-center">My Workouts (past 7 days)</h2>
 
 
 <div class="col-md-8 col-xs-12">
@@ -41,7 +41,7 @@
 </div>
 
 <div class="col-md-4 col-xs-12">
-  <h2 class='text-center'><%current_user.full_name%>'s Friends</h2>
+  <h2 class='text-center'><%= current_user.full_name%>'s Friends</h2>
   <% if current_user.friends.any?%>
     <% @friends.each do |friend| %>
       <div class="col-md-offset-3 col-md-6 friend_name">
