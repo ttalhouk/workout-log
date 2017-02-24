@@ -23,6 +23,12 @@ RSpec.feature "User Sign up" do
     expect(page).to_not have_link("Sign Up")
     expect(page).to have_link("Sign Out")
 
+    user = User.last
+    room = user.room
+    room_name = user.full_name.split(' ').join('-')
+    expect(room.name).to eq(room_name)
+
+
   end
   scenario "A user signs up with invalid credentials" do
     visit '/'

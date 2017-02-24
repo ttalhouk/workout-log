@@ -7,7 +7,12 @@ class User < ApplicationRecord
   has_many :exercises, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
+  has_one :room
+
   validates :email, :first_name, :last_name, :password, presence:true
+
+  after_create :create_chatroom
+
 
   self.per_page = 10
 
@@ -34,5 +39,12 @@ class User < ApplicationRecord
 
   def current_friendship(friend)
     friendships.where(friend: friend).first
+  end
+
+  private
+
+  def create_chatroom
+    hyphenated_user_name = self.full_name.split(' ').join('-')
+    Room.create(name: hyphenated_user_name, user_id: self.id)
   end
 end

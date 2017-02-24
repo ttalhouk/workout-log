@@ -19,7 +19,7 @@ class FriendshipsController < ApplicationController
     if friendship.destroy
       flash[:success] = "#{friendship.friend.full_name} was unfollowed"
     else
-      flash[:danger] = 'Friendship was not deleted'
+      flash.now[:danger] = 'Friendship was not deleted'
     end
     redirect_to user_exercises_path(current_user)
   end
