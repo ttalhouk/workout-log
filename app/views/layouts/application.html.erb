@@ -13,8 +13,9 @@
       <%= render "/shared/header"%>
       <div class="row content">
         <%= render "/shared/messages"%>
-        <div class="container-fluid">
+        <div class="<%= content_for?(:whole_page) ? 'container_fluid': 'container' %>">
           <%= yield %>
+          <%= yield :whole_page %>
         </div>
       </div>
       <%= render "/shared/footer"%>
